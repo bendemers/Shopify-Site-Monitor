@@ -147,7 +147,7 @@ def extract_products(url, path, collections=None):
         for col in get_page_collections(url):
             if collections and col['handle'] not in collections:
                 continue
-            handle = col['handle']
+            handle = col['handle'] 
             title = col['title']
             for product in extract_products_collection(url, handle):
                 variant_id = product['variant_id']

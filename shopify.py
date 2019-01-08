@@ -8,7 +8,7 @@ from optparse import OptionParser
 from discord_hooks import Webhook
 from shutil import copyfile
 
-collections = ["supreme-0-week"]
+collections = []
 
 USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36'
 
@@ -158,14 +158,14 @@ def extract_products(url, path, collections=None):
                 writer.writerow([product['title'], product['product_url'],
                                  product['image_src']])
 
-extract_products("https://www.premecopp.com/", 'products.csv', collections)
+extract_products(url, 'products.csv', collections)
 copyfile("products.csv", "old_prodcuts.csv")
 
 last= ""
 
 while True:
     print("scraping!")
-    extract_products("https://www.premecopp.com/", 'products.csv', collections)
+    extract_products(url, 'products.csv', collections)
 
     DISCORD_HOOK ="https://discordapp.com/api/webhooks/500094582168748053/OxVosSd6JovhQVVODlOTky4bBjKbNOHPNTETxey5Y7axybY28fbc1Bfth_xKxAMNyVQc"
 
